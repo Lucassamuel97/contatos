@@ -29,7 +29,12 @@
 
     <ion-item>
       <ion-label stacked>Employed</ion-label>
-      <ion-input type="boolean" name="employed" [(ngModel)]="model.employed"></ion-input>
+      <ion-checkbox color="employed"></ion-checkbox>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Salary</ion-label>
+      <ion-input type="text" name="salary" [(ngModel)]="model.salary"></ion-input>
     </ion-item>
     
   </ion-list>
