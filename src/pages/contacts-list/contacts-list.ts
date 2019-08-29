@@ -32,6 +32,15 @@ export class ContactsListPage {
     console.log('ionViewDidLoad ContactsListPage');
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   openContact(id: number) {
     this.contactsProvider.getContact(id)
     .then((result: any) => {
@@ -44,3 +53,4 @@ export class ContactsListPage {
     });
   }
 }
+

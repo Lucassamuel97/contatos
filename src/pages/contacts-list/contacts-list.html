@@ -11,6 +11,10 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list inset>
     <ion-item *ngFor="let contact of contacts" (click)="openContact(contact.id)">
       <h2>{{contact.name}}</h2>
