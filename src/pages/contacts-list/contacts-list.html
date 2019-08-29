@@ -12,7 +12,7 @@
 
 <ion-content padding>
   <ion-list inset>
-    <ion-item *ngFor="let contact of contacts">
+    <ion-item *ngFor="let contact of contacts" (click)="openContact(contact.id)">
       <h2>{{contact.name}}</h2>
       <p>{{contact.gender}}</p>
       <p>{{contact.birthday}}</p>
