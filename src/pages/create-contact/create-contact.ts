@@ -22,7 +22,7 @@ export class CreateContactPage {
     this.model.gender = 'male';
     this.model.birthday = '1997-08-12';
     this.model.employed = false;
-    this.model.salary = 1000.0;
+    this.model.salary = '1000.0';
   }
 
   createContact() {
