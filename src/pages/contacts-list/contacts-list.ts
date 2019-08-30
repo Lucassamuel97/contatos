@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ContactsProvider } from '../../providers/contacts/contacts';
 
 /**
@@ -22,35 +22,46 @@ export class ContactsListPage {
 
   getContacts() {
     this.contactsProvider.getContacts()
-    .then(data => {
-      this.contacts = data;
-      console.log(this.contacts);
-    });
+      .then(data => {
+        this.contacts = data;
+        console.log(this.contacts);
+      });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactsListPage');
   }
 
-  doRefresh(refresher) {
+  doRefresh(refresher){
     console.log('Begin async operation', refresher);
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    this.contactsProvider.getContacts()
+      .then(data => {
+        this.contacts = data;
+        console.log(this.contacts);
+        refresher.complete();
+      });
   }
 
   openContact(id: number) {
     this.contactsProvider.getContact(id)
-    .then((result: any) => {
-      this.navCtrl.push('ContactDetailsPage',  { 
-        contact: result 
+      .then((result: any) => {
+        this.navCtrl.push('ContactDetailsPage', {
+          contact: result
+        });
+      })
+      .catch((error: any) => {
+        this.toast.create({ message: error.error }).present();
       });
-    })
-    .catch((error: any) => {
-      this.toast.create({ message: error.error }).present();
-    });
+  }
+
+  deleteContact(contact: any) {
+    this.contactsProvider.destroyContact(contact.id)
+      .then((result: any) => {
+        this.toast.create({ message: 'Excluído!', duration: 3000 }).present();
+      })
+      .catch((error: any) => {
+        this.toast.create({ message: error.error, duration: 3000 }).present();
+      });
   }
 }
 

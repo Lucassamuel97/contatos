@@ -12,16 +12,26 @@
 
 <ion-content padding>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
+    <ion-refresher-content>
+    </ion-refresher-content>
   </ion-refresher>
 
   <ion-list inset>
-    <ion-item *ngFor="let contact of contacts" (click)="openContact(contact.id)">
-      <h2>{{contact.name}}</h2>
-      <p>{{contact.gender}}</p>
-      <p>{{contact.birthday}}</p>
-      <p>{{contact.employed}}</p>
-      <p>{{contact.salary}}</p>
-    </ion-item>
+    <ion-item-sliding *ngFor="let contact of contacts">
+      <ion-item (click)="openContact(contact.id)">
+        <h2>{{contact.name}}</h2>
+        <p>{{contact.gender}}</p>
+        <p>{{contact.birthday}}</p>
+        <p>{{contact.employed}}</p>
+        <p>{{contact.salary}}</p>
+      </ion-item>
+
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="deleteContact(contact)">
+          <ion-icon name="trash"></ion-icon>
+          Excluir
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

@@ -18,10 +18,10 @@ export class ContactsProvider {
 
   getContacts() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl  + '/contacts.json').subscribe(data => {
-          resolve(data);
+      this.http.get(this.apiUrl + '/contacts.json').subscribe(data => {
+        resolve(data);
       }, err => {
-          console.log(err);
+        console.log(err);
       });
     });
   }
@@ -29,9 +29,9 @@ export class ContactsProvider {
     return new Promise((resolve, reject) => {
       this.http.post(this.apiUrl + '/contacts.json', data)
         .subscribe(res => {
-            resolve(res);
+          resolve(res);
         }, (err) => {
-            reject(err);
+          reject(err);
         });
     });
   }
@@ -40,11 +40,23 @@ export class ContactsProvider {
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl + '/contacts/' + id + '.json')
         .subscribe(res => {
-            resolve(res);
+          resolve(res);
         }, (err) => {
-            reject(err);
+          reject(err);
         });
     });
   }
+
+  destroyContact(id: number) {
+    return new Promise((resolve, reject) => {
+      this.http.delete(this.apiUrl + '/contacts/' + id + '.json')
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
 
 }
