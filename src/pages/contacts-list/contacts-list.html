@@ -27,11 +27,16 @@
       </ion-item>
 
       <ion-item-options side="left">
+        <button ion-button color="primary" (click)="openEditContact(contact.id)">
+          <ion-icon name="create"></ion-icon>
+          Editar
+        </button>
         <button ion-button color="danger" (click)="deleteContact(contact)">
           <ion-icon name="trash"></ion-icon>
           Excluir
         </button>
       </ion-item-options>
+
     </ion-item-sliding>
   </ion-list>
 </ion-content>

@@ -42,6 +42,18 @@ export class ContactsListPage {
       });
   }
 
+  openEditContact(id: number) {
+    this.contactsProvider.getContact(id)
+    .then((result: any) => {
+      this.navCtrl.push('ContactEditPage',  { 
+        contact: result 
+      });
+    })
+    .catch((error: any) => {
+      this.toast.create({ message: error.error }).present();
+    });
+  }
+
   openContact(id: number) {
     this.contactsProvider.getContact(id)
       .then((result: any) => {
@@ -57,7 +69,7 @@ export class ContactsListPage {
   deleteContact(contact: any) {
     this.contactsProvider.destroyContact(contact.id)
       .then((result: any) => {
-        
+
         let index = this.contacts.indexOf(contact);
         this.contacts.splice(index, 1);
 

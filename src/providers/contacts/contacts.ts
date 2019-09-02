@@ -36,6 +36,17 @@ export class ContactsProvider {
     });
   }
 
+  updateContact(id: number, data) {
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiUrl + '/contacts/' + id + '.json', data)
+        .subscribe(res => {
+            resolve(res);
+        }, (err) => {
+            reject(err);
+        });
+    });
+  }
+
   getContact(id: number) {
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl + '/contacts/' + id + '.json')
