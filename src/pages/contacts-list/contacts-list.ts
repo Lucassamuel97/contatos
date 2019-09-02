@@ -57,6 +57,10 @@ export class ContactsListPage {
   deleteContact(contact: any) {
     this.contactsProvider.destroyContact(contact.id)
       .then((result: any) => {
+        
+        let index = this.contacts.indexOf(contact);
+        this.contacts.splice(index, 1);
+
         this.toast.create({ message: 'Excluído!', duration: 3000 }).present();
       })
       .catch((error: any) => {
