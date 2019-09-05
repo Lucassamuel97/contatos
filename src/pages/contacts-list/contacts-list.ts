@@ -28,7 +28,8 @@ export class ContactsListPage {
       });
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    this.getContacts();
     console.log('ionViewDidLoad ContactsListPage');
   }
 

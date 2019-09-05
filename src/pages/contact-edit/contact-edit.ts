@@ -28,6 +28,17 @@ export class ContactEditPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactEditPage');
   }
+
+  saveContact() {
+    this.contactsProvider.updateContact(this.model.id, this.model)
+    .then((result: any) => {
+      this.toast.create({ message: 'Usuário salvo', duration: 3000 }).present();
+        this.navCtrl.pop();
+      })
+    .catch((error: any) => {
+      this.toast.create({ message: error.error, duration: 3000 }).present();
+    });
+  }
 }
 
 export class Contact {
