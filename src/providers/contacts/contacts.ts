@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ContactsProvider {
 
-  apiUrl = 'https://contacts-v1-dw2.herokuapp.com';
+  apiUrl = 'http://contacts-v1-dw2.herokuapp.com';
 
   constructor(public http: HttpClient) {
     console.log('Hello ContactsProvider Provider');
